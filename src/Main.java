@@ -7,6 +7,7 @@ void main() {
     employeeManagementSystem.addEmployee(new Employee(15, "Sham", Department.SALES, new BigDecimal(90000)));
     employeeManagementSystem.addEmployee(new Employee(16, "Sham", Department.SALES, new BigDecimal(90000)));
     employeeManagementSystem.addEmployee(new Employee(4, "Gokul ", Department.MARKETING, new BigDecimal(190000)));
+    employeeManagementSystem.addEmployee(new Employee(14, "Anu ", Department.MARKETING, new BigDecimal(190000)));
     employeeManagementSystem.removeEmployee(2);
     System.out.println(employeeManagementSystem.removeEmployee(5));
     System.out.println("List of Employees: "+employeeManagementSystem.getEmployee());
@@ -22,5 +23,7 @@ void main() {
     employeeManagementSystem.findDuplicateNames();
     employeeManagementSystem.countEmployeeByDepartment();
     employeeManagementSystem.find3MostPaidEmployee();
-
+    employeeManagementSystem.getEmployeeFromSalaryRange(BigDecimal.valueOf(100000),BigDecimal.valueOf(5000000));
+    System.out.println(" Group employees by department\n"+employeeManagementSystem.groupByDepartment());
+    employeeManagementSystem.sortName();
 }
