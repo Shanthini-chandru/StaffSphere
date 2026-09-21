@@ -1,13 +1,8 @@
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /* To Do Methods:
 
-5. List all employees
-6. List employees by department
 7. Sort by salary
 8. Sort by name
 9. Find highest-paid employee
@@ -30,12 +25,14 @@ public class EmployeeManagementSystem{
         this.employeeMap = new HashMap<>();
     }
 
+    //1. Add new Employee
      void addEmployee(Employee e){
         employees.add(e);
         employeeMap.put(e.getId(),e);
         System.out.println("Employee ("+e.getName()+") added!");
     }
 
+    //2.Remove emloyee by id
      boolean removeEmployee(int id){
 
        //boolean remove = employees.removeIf(e -> e.getId() == id);
@@ -52,11 +49,6 @@ public class EmployeeManagementSystem{
         }
      }
 
-      List<Employee> getEmployee(){
-        System.out.println("Retrieving Employees!");
-        return employees;
-     }
-
      //3. Search employee
      Employee searchEmployee(int id){
         Employee found = employeeMap.get(id);
@@ -67,7 +59,9 @@ public class EmployeeManagementSystem{
         }
         return found;
     }
-      //4. Update employee
+
+
+    //4. Update employee
     Employee updateEmployee(int id,BigDecimal salary){
         Employee found = employeeMap.get(id);
         if(found != null){
@@ -83,9 +77,30 @@ public class EmployeeManagementSystem{
             System.out.println("Update Failed");
             return null;
         }
+    }
 
+    //5. List all employees
+    List<Employee> getEmployee(){
+            System.out.println("Retrieving Employees!");
+            return employees;
+    }
+
+    //6. List employees by department
+    Map<String , List<Employee>> getEmployeesByDepartment(){
+        Map<String , List<Employee>> group = new HashMap<>();
+        for (Employee e:employees){
+            group.computeIfAbsent(e.getDepartment().toString(), k -> new ArrayList<>()).add(e);
+        }
+        for( Map.Entry<String, List<Employee>> entry: group.entrySet()){
+            System.out.println("Department: "+entry.getKey()+"--> "+entry.getValue());
+        }
+
+        return group;
 
     }
+
+
+
 
 
 }
