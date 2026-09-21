@@ -6,4 +6,7 @@ void main() {
     employeeManagementSystem.addEmployee(new Employee(3, "Geetha", Department.SALES, new BigDecimal(90000)));
     employeeManagementSystem.addEmployee(new Employee(4, " Gokul ", Department.MARKETING, new BigDecimal(190000)));
     employeeManagementSystem.removeEmployee(2);
+    System.out.println(employeeManagementSystem.removeEmployee(5));
+    System.out.println("List of Employees: "+employeeManagementSystem.getEmployee());
+    employeeManagementSystem.searchEmployee(4);
 }
