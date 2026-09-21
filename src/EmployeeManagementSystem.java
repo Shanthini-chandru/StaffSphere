@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -5,7 +6,6 @@ import java.util.Map;
 
 /* To Do Methods:
 
-4. Update employee
 5. List all employees
 6. List employees by department
 7. Sort by salary
@@ -23,6 +23,7 @@ public class EmployeeManagementSystem{
 
     private final List<Employee> employees;
     private final Map<Integer, Employee> employeeMap;
+
 
     EmployeeManagementSystem(){
         this.employees = new ArrayList<>();
@@ -57,7 +58,7 @@ public class EmployeeManagementSystem{
      }
 
      //3. Search employee
-    public Employee searchEmployee(int id){
+     Employee searchEmployee(int id){
         Employee found = employeeMap.get(id);
         if(found != null){
             System.out.println("Found Employee: "+found.getName());
@@ -65,6 +66,25 @@ public class EmployeeManagementSystem{
             System.out.println("No employee found with ID: "+id);
         }
         return found;
+    }
+      //4. Update employee
+    Employee updateEmployee(int id,BigDecimal salary){
+        Employee found = employeeMap.get(id);
+        if(found != null){
+            //removing old entry from the list
+            employees.remove(found);
+            //updating the HashMap
+            found.setSalary( new BigDecimal(found.getSalary().intValue()+salary.intValue()));
+            //adding new list entry with updates salary
+            employees.add(found);
+            System.out.println("The Employee "+found.getName()+"got salary apprisal, current salary: "+found.getSalary());
+            return found;
+        }else {
+            System.out.println("Update Failed");
+            return null;
+        }
+
+
     }
 
 

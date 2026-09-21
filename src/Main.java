@@ -9,4 +9,7 @@ void main() {
     System.out.println(employeeManagementSystem.removeEmployee(5));
     System.out.println("List of Employees: "+employeeManagementSystem.getEmployee());
     employeeManagementSystem.searchEmployee(4);
+    employeeManagementSystem.updateEmployee(3, BigDecimal.valueOf(2000));
+    System.out.println("List of Employees: "+employeeManagementSystem.getEmployee());
+
 }
