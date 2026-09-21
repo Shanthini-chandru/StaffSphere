@@ -4,7 +4,6 @@ import java.util.*;
 
 /* To Do Methods:
 
-12. Find top 3 highest-paid employees
 13. Find employees earning between X and Y
 14. Group employees by department
 15. Display employees in alphabetical order
@@ -145,6 +144,13 @@ public class EmployeeManagementSystem{
         }
     }
 
+    //12. Find top 3 highest-paid employees
+    void find3MostPaidEmployee(){
+        employees.stream()
+                .sorted((e1,e2)->e2.getSalary().compareTo(e1.getSalary()))
+                .limit(3)
+                .forEach(System.out::println);
+    }
 
 
 
