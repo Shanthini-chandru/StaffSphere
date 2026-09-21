@@ -1,9 +1,9 @@
 import java.math.BigDecimal;
 import java.util.*;
 
+
 /* To Do Methods:
 
-7. Sort by salary
 8. Sort by name
 9. Find highest-paid employee
 10. Find duplicate names
@@ -32,7 +32,7 @@ public class EmployeeManagementSystem{
         System.out.println("Employee ("+e.getName()+") added!");
     }
 
-    //2.Remove emloyee by id
+    //2.Remove employee by id
      boolean removeEmployee(int id){
 
        //boolean remove = employees.removeIf(e -> e.getId() == id);
@@ -50,14 +50,13 @@ public class EmployeeManagementSystem{
      }
 
      //3. Search employee
-     Employee searchEmployee(int id){
+     void searchEmployee(int id){
         Employee found = employeeMap.get(id);
         if(found != null){
             System.out.println("Found Employee: "+found.getName());
         }else {
             System.out.println("No employee found with ID: "+id);
         }
-        return found;
     }
 
 
@@ -86,7 +85,7 @@ public class EmployeeManagementSystem{
     }
 
     //6. List employees by department
-    Map<String , List<Employee>> getEmployeesByDepartment(){
+    void getEmployeesByDepartment(){
         Map<String , List<Employee>> group = new HashMap<>();
         for (Employee e:employees){
             group.computeIfAbsent(e.getDepartment().toString(), k -> new ArrayList<>()).add(e);
@@ -95,9 +94,17 @@ public class EmployeeManagementSystem{
             System.out.println("Department: "+entry.getKey()+"--> "+entry.getValue());
         }
 
-        return group;
-
     }
+
+    //7. Sort by salary
+    void sortBySalary(){
+      Comparator.comparing(Employee::getSalary);
+        for(Employee e: employees){
+            System.out.println(e.getName() +" --> "+e.getSalary());
+        }
+    }
+
+
 
 
 
