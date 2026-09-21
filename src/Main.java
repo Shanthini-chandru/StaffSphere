@@ -17,5 +17,6 @@ void main() {
     employeeManagementSystem.getEmployeesByDepartment();
     employeeManagementSystem.sortBySalary();
     employeeManagementSystem.sortByName();
+    employeeManagementSystem.getHighpaidEmployee();
 
 }

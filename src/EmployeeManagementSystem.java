@@ -108,6 +108,15 @@ public class EmployeeManagementSystem{
         for(Employee e: employees){
             System.out.println(e.getName() +" --> "+e.getDepartment()+" --> "+e.getSalary()+" --> "+e.getId());
         }
+    }
+
+    //9. Find highest-paid employee
+    void getHighpaidEmployee(){
+       Optional<Employee> maxSalary =  employees.stream()
+               .filter(e-> e.getSalary()!=null)
+                .max(Comparator.comparing(Employee::getSalary));
+
+        maxSalary.ifPresent(employee -> System.out.println("Highest Paid Employee: " + employee.getName() + " with the salary of " + employee.getSalary()));
 
     }
 
