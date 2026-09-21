@@ -4,7 +4,6 @@ import java.util.*;
 
 /* To Do Methods:
 
-11. Count employees by department
 12. Find top 3 highest-paid employees
 13. Find employees earning between X and Y
 14. Group employees by department
@@ -133,6 +132,19 @@ public class EmployeeManagementSystem{
 
 
     }
+
+    //11. Count employees by department
+    void countEmployeeByDepartment() {
+        Map<Department,Integer> deptCount= new HashMap<>();
+
+        for(Employee e:employees){
+            deptCount.put(e.getDepartment(), deptCount.getOrDefault(e.getDepartment(),0)+1);
+        }
+        for( Map.Entry<Department, Integer> e: deptCount.entrySet()){
+            System.out.println(e.getKey()+ " has count of: "+e.getValue()+"  Employee(s).");
+        }
+    }
+
 
 
 

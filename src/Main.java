@@ -20,5 +20,6 @@ void main() {
     employeeManagementSystem.sortByName();
     employeeManagementSystem.getHighpaidEmployee();
     employeeManagementSystem.findDuplicateNames();
+    employeeManagementSystem.countEmployeeByDepartment();
 
 }
