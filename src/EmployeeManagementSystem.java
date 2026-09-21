@@ -4,7 +4,6 @@ import java.util.*;
 
 /* To Do Methods:
 
-10. Find duplicate names
 11. Count employees by department
 12. Find top 3 highest-paid employees
 13. Find employees earning between X and Y
@@ -117,6 +116,21 @@ public class EmployeeManagementSystem{
                 .max(Comparator.comparing(Employee::getSalary));
 
         maxSalary.ifPresent(employee -> System.out.println("Highest Paid Employee: " + employee.getName() + " with the salary of " + employee.getSalary()));
+
+    }
+
+    //10. Find duplicate names
+    void findDuplicateNames(){
+        Map<String, Integer> nameCounter = new HashMap<>();
+
+        for(Employee e:employees){
+                nameCounter.put(e.getName(),nameCounter.getOrDefault(e.getName(),0)+1);
+        }
+
+        nameCounter.entrySet().stream()
+                .filter(entry -> entry.getValue() >1)
+                .forEach(entry->System.out.println("Duplicate: "+entry.getKey()));
+
 
     }
 
