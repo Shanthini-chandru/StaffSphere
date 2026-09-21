@@ -4,8 +4,6 @@ import java.util.*;
 
 /* To Do Methods:
 
-8. Sort by name
-9. Find highest-paid employee
 10. Find duplicate names
 11. Count employees by department
 12. Find top 3 highest-paid employees
@@ -98,14 +96,20 @@ public class EmployeeManagementSystem{
 
     //7. Sort by salary
     void sortBySalary(){
-      Comparator.comparing(Employee::getSalary);
-        for(Employee e: employees){
-            System.out.println(e.getName() +" --> "+e.getSalary());
-        }
+      employees.sort(Comparator.comparing(Employee::getSalary));
+
     }
 
+    //8. Sort by name
+    void  sortByName(){
+        System.out.println("8. Name Sorting : ");
+        System.out.println("-----------------");
+        employees.sort(Comparator.comparing(Employee::getName));
+        for(Employee e: employees){
+            System.out.println(e.getName() +" --> "+e.getDepartment()+" --> "+e.getSalary()+" --> "+e.getId());
+        }
 
-
+    }
 
 
 
