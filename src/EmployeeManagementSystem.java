@@ -1,12 +1,10 @@
 import java.math.BigDecimal;
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 /* To Do Methods:
 
-13. Find employees earning between X and Y
-14. Group employees by department
-15. Display employees in alphabetical order
 
 */
 public class EmployeeManagementSystem{
@@ -151,6 +149,34 @@ public class EmployeeManagementSystem{
                 .limit(3)
                 .forEach(System.out::println);
     }
+
+    //13. Find employees earning between X and Y
+    void getEmployeeFromSalaryRange(BigDecimal min, BigDecimal max){
+        employees.stream()
+                .filter(e -> e.getSalary() != null
+                        && e.getSalary().compareTo(min) >= 0
+                        && e.getSalary().compareTo(max) <= 0)
+                .forEach(e ->System.out.println("From the range: "+min+" "+max+" Employees "+e.getName()+ "Found & Salary is "+e.getSalary()));
+
+    }
+
+    //14. Group employees by department
+    Map<Department, List<Employee>> groupByDepartment(){
+        return employees.stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment))
+                ;
+    }
+
+    //15. Display employees in alphabetical order
+    void sortName(){
+        employees.
+                stream().sorted((e1,e2)->e1.getName().compareTo(e2.getName()))
+                .forEach(System.out::println);
+
+    }
+
+
+
 
 
 
